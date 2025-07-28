@@ -1,214 +1,305 @@
-<!DOCTYPE HTML>
-<!--
-	Verti by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Kirk McGraw Project Page</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload homepage">
-		<div id="page-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirk McGraw | Data Scientist</title>
+    <style>
+        /* --- Global Styles & Modern Reset --- */
+        :root {
+            --primary-color: #0a2b4c; /* Deep Blue */
+            --secondary-color: #2a9d8f; /* Teal Accent */
+            --background-color: #f8f9fa;
+            --text-color: #343a40;
+            --light-gray: #e9ecef;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<header id="header" class="container">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-					</header>
-				</div>
+        html {
+            scroll-behavior: smooth;
+        }
 
-			<!-- Banner -->
-				<div id="banner-wrapper">
-					<div id="banner" class="box container">
-						<div class="row">
-							<div class="col-7 col-12-medium">
-								<h2>Hi! Welcome to my page!</h2>
-								<p>Feel free to look around.</p>
-							</div>
-							<div class="col-5 col-12-medium">
-								<ul>
-									<li><a href="#" class="button large icon solid fa-arrow-circle-right">Ok let's go</a></li>
-									<li><a href="#" class="button alt large icon solid fa-question-circle">More info</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-			<!-- Features -->
-				<div id="features-wrapper">
-					<div class="container">
-						<div class="row">
-							<div class="col-4 col-12-medium">
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-								<!-- Box -->
-									<section class="box feature">
-										<a href="Birdstrikes/Bird Strikes and You, by Kirk McGraw, Dan Monahan, David yu.pdf" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>View R project, logistic regression analysis, Bird Strikes and You</h2>
-												<p>Maybe here as well I think</p>
-											</header>
-											<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-										</div>
-									</section>
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
-							</div>
-							<div class="col-4 col-12-medium">
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; border-bottom: 3px solid var(--secondary-color); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2.5rem;}
+        h3 { font-size: 1.4rem; }
+        p { margin-bottom: 1rem; }
+        a { color: var(--secondary-color); text-decoration: none; }
 
-								<!-- Box -->
-									<section class="box feature">
-										<a href="Computer Vision/Kirk McGraw PPE Object Detection.html" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>View PPE Object Detection Model Comparison</h2>
-												<p>This is also an interesting subtitle</p>
-											</header>
-											<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-										</div>
-									</section>
+        section {
+            padding: 60px 0;
+        }
+        
+        /* --- Navigation Bar --- */
+        #navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
 
-							</div>
-							<div class="col-4 col-12-medium">
+        #navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
 
-								<!-- Box -->
-									<section class="box feature">
-										<a href="DE Pipeline/DE Project index.html" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>View Operationalized Full Lifecycle Data Lakehouse using Apache Spark via DataBricks</h2>
-												<p>Here's another intriguing subtitle</p>
-											</header>
-											<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-										</div>
-									</section>
+        #navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
 
-							</div>
-						</div>
-					</div>
-				</div>
+        #navbar ul {
+            display: flex;
+            list-style: none;
+        }
 
-			<!-- Main -->
-				<div id="main-wrapper">
-					<div class="container">
-						<div class="row gtr-200">
-							<div class="col-4 col-12-medium">
+        #navbar ul li a {
+            color: var(--primary-color);
+            padding: 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
 
-								<!-- Sidebar -->
-									<div id="sidebar">
-										<section class="widget thumbnails">
-											<h3>Interesting stuff</h3>
-											<div class="grid">
-												<div class="row gtr-50">
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
-												</div>
-											</div>
-											<a href="#" class="button icon fa-file-alt">More</a>
-										</section>
-									</div>
+        #navbar ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* --- Hero / About Section --- */
+        #about {
+            background-color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
 
-							</div>
-						</div>
-					</div>
-				</div>
+        #about h1 {
+            margin-bottom: 0.5rem;
+        }
 
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="col-3 col-6-medium col-12-small">
+        #about .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
 
-								<!-- Links -->
-									<section class="widget links">
-										<h3>Random Stuff</h3>
-										<ul class="style2">
-											<li><a href="#">Etiam feugiat condimentum</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
-									</section>
+        #about .about-text {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
 
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
+        /* --- Projects Section --- */
+        #projects {
+            text-align: center;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
 
-								<!-- Links -->
-									<section class="widget links">
-										<h3>Random Stuff</h3>
-										<ul class="style2">
-											<li><a href="#">Etiam feugiat condimentum</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
-									</section>
+        .project-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
 
-								<!-- Links -->
-									<section class="widget links">
-										<h3>Random Stuff</h3>
-										<ul class="style2">
-											<li><a href="#">Etiam feugiat condimentum</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
-									</section>
+        .project-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card-content p {
+            flex-grow: 1;
+        }
 
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
+        .project-card .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 1rem;
+            align-self: flex-start;
+        }
 
-								<!-- Contact -->
-									<section class="widget contact last">
-										<h3>Contact Us</h3>
-										<ul>
-											<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-											<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-											<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-											<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-											<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
-										</ul>
-										<p>Tampa, FL<br />
-										Nashville, TN 00000<br />
-										(850)567-9173</p>
-									</section>
+        .project-card .btn:hover {
+            background-color: #238a7e;
+            transform: scale(1.05);
+        }
 
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-12">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
+        /* --- Contact Section --- */
+        #contact {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+        }
+        #contact h2 {
+            color: #fff;
+            border-color: var(--secondary-color);
+        }
+        #contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
 
-			</div>
+        .contact-links a {
+            color: #fff;
+            font-size: 1.1rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
 
-		<!-- Scripts -->
+        .contact-links a:hover {
+            color: var(--secondary-color);
+        }
 
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        /* --- Footer --- */
+        #footer {
+            background-color: #fff;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
 
-	</body>
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            
+            #navbar .container {
+                flex-direction: column;
+            }
+            #navbar ul {
+                margin-top: 0.5rem;
+            }
+            #navbar ul li a {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="#about" class="logo">Kirk McGraw</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h1>Hi, I'm Kirk McGraw</h1>
+            <p class="subtitle">Data Scientist | Civil Engineering | Computer Vision</p>
+            <p class="about-text">
+                I'm a Data Scientist in the civil engineering field. I've worked on computer vision pipelines and love exploring datasets in my spare time. This page showcases a few of the more interesting personal and academic analyses I've done. Thanks for taking a look!
+            </p>
+        </div>
+    </section>
+
+    <main>
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project-grid">
+
+                    <div class="project-card">
+                        <div class="project-card-content">
+                            <h3>Bird Strikes and You</h3>
+                            <p>A logistic regression analysis in R to determine what factors influence birdstrikes. Mass of the animal and season were most predictive of higher repair costs, and ways to avoid expensive bills were recommended to airlines.</p>
+                            <a href="Birdstrikes/Bird Strikes and You, by Kirk McGraw, Dan Monahan, David yu.pdf" class="btn" target="_blank" rel="noopener noreferrer">View Analysis (PDF)</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-card-content">
+                            <h3>PPE Object Detection</h3>
+                            <p>Comparative investigation of R-CNN vs. Transformer object detection models on personal protective equipment data. Models can monitor PPE non-compliance in industry, preventing fines and liability.</p>
+                            <a href="Computer Vision/Kirk McGraw PPE Object Detection.html" class="btn" target="_blank" rel="noopener noreferrer">View Model Comparison</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-card-content">
+                            <h3>Data Engineering Lakehouse</h3>
+                            <p>Complete end-to-end ML data pipeline incorporating bronze, silver, and gold lakehouse schema with PySpark. The resulting architecture feeds both BI and ML business needs efficiently.</p>
+                            <a href="DE Pipeline/DE Project index.html" class="btn" target="_blank" rel="noopener noreferrer">View DE Project</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>If you'd like to reach out, here's a few ways to contact me.</p>
+            <div class="contact-links">
+                <a href="#">kim449@g.harvard.edu</a>
+                <span aria-hidden="true">|</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">https://github.com/Vistakirk</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2025 Kirk McGraw. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
 </html>
