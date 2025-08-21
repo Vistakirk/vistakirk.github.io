@@ -3,19 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DE Project and Code</title>
+    <title>DE Project | Kirk McGraw</title>
+    <style>
+        /* --- CORE STYLES (Borrowed from main portfolio) --- */
+        :root {
+            --primary-color: #0a2b4c; 
+            --secondary-color: #2a9d8f; 
+            --background-color: #f8f9fa;
+            --text-color: #343a40;
+            --light-gray: #e9ecef;
+            --accent-color-light: #f0f7f6;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { color: var(--primary-color); margin-bottom: 1rem; line-height: 1.2; }
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; border-bottom: 3px solid var(--secondary-color); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2.5rem;}
+        h3 { font-size: 1.4rem; }
+        p { margin-bottom: 1rem; }
+        a { color: var(--secondary-color); text-decoration: none; }
+
+        /* --- Navigation Bar --- */
+        #navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky; top: 0; width: 100%; z-index: 1000;
+        }
+        #navbar .container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 20px; }
+        #navbar .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }
+        #navbar .nav-links a { color: var(--primary-color); padding: 1rem; font-weight: 600; transition: color 0.3s ease; }
+        #navbar .nav-links a:hover { color: var(--secondary-color); }
+
+        /* --- Project Header --- */
+        .project-header {
+            background-color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .project-header p {
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- Main Content Section --- */
+        .project-content {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        /* --- Technology Stack Grid --- */
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+        .tech-item {
+            background: #fff;
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- Pipeline Steps Container --- */
+        .pipeline-steps-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            text-align: left;
+        }
+        
+        .step-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .step-card-header {
+            background-color: var(--accent-color-light);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .step-card-header h3 {
+            margin-bottom: 0;
+        }
+
+        .step-card-content {
+            padding: 1.5rem;
+        }
+
+        .step-card-content .btn-container {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn:hover {
+            background-color: #238a7e;
+            transform: scale(1.05);
+        }
+        
+        /* --- Footer --- */
+        #footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            #navbar .container { flex-direction: column; }
+            #navbar .nav-links { margin-top: 0.5rem; }
+        }
+    </style>
 </head>
 <body>
-    <h1>DE Project and Code</h1>
-    <ul>
-        <li><a href="Final Pipeline Presentation.pdf">Final End-to-End Lifecycle Data Mart Presentation</a></li>
-        <li><a href="Data Pipeline.html">Data Pipeline Code</a></li>
-        <li><a href="Data Modeling.html">Data Modeling Code</a></li>
-        <li><a href="Forecasting Predictions.html">Forecasting Predictions Code</a></li>
-        <li><a href="Data Streaming.html">Data Streaming Code</a></li>
-        <li><a href="Operationalized Pipeline.html">Operationalized Pipeline</a></li>
-        <li><a href="BI Queries.html">BI Queries</a></li>
-        <li><a href="California Security Model.html">Data Security Example</a></li>
-        <li></li>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">Data Engineering Project</a>
+            <div class="nav-links">
+                <a href="../index.html#projects">← Back to Main Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <div class="container">
+            <h1>End-to-End Data Engineering Lakehouse</h1>
+            <p>This project demonstrates a complete end-to-end data pipeline using a modern lakehouse architecture. The system ingests raw data, processes it through Bronze, Silver, and Gold layers with PySpark, and operationalizes it to serve both Business Intelligence (BI) and Machine Learning (ML) applications.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-content">
+            <div class="container">
+                <h2>Technology Stack</h2>
+                <div class="tech-stack-grid">
+                    <div class="tech-item">PySpark</div>
+                    <div class="tech-item">Delta Lake</div>
+                    <div class="tech-item">SQL</div>
+                    <div class="tech-item">Power BI</div>
+                </div>
+
+                <h2>Project Workflow & Components</h2>
+                <div class="pipeline-steps-container">
+
+                    <div class="step-card">
+                        <div class="step-card-header"><h3>Project Overview</h3></div>
+                        <div class="step-card-content">
+                            <p>This presentation provides a high-level overview of the entire project lifecycle, from initial data ingestion and streaming to the final data mart creation and business applications.</p>
+                            <div class="btn-container">
+                                <a href="Final Pipeline Presentation.pdf" class="btn" target="_blank" rel="noopener noreferrer">View Final Presentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-card-header"><h3>Bronze Layer: Raw Data Ingestion</h3></div>
+                        <div class="step-card-content">
+                            <p>The first stage involves ingesting raw, unstructured data. This layer includes real-time data streaming and the initial storage of data in its original format, setting the foundation for further processing.</p>
+                            <div class="btn-container">
+                                <a href="Data Streaming.html" class="btn" target="_blank" rel="noopener noreferrer">View Data Streaming Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-card-header"><h3>Silver Layer: Cleansing & Modeling</h3></div>
+                        <div class="step-card-content">
+                            <p>Data from the Bronze layer is cleaned, validated, and structured in the Silver layer. This involves data modeling, applying schemas, and ensuring data quality and integrity for downstream use.</p>
+                            <div class="btn-container">
+                                <a href="Data Pipeline.html" class="btn" target="_blank" rel="noopener noreferrer">View Data Pipeline Code</a>
+                                <a href="Data Modeling.html" class="btn" target="_blank" rel="noopener noreferrer">View Data Modeling Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-card-header"><h3>Gold Layer: Business Aggregation</h3></div>
+                        <div class="step-card-content">
+                            <p>The Gold layer contains highly refined and aggregated data ready for analytics. This layer is optimized for business intelligence reporting and serves as the primary source for machine learning models.</p>
+                            <div class="btn-container">
+                                <a href="Operationalized Pipeline.html" class="btn" target="_blank" rel="noopener noreferrer">View Operationalized Pipeline</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-card-header"><h3>Business Intelligence & ML</h3></div>
+                        <div class="step-card-content">
+                            <p>The final output of the pipeline feeds directly into business applications. This includes running complex SQL queries for BI dashboards and using the clean data for predictive forecasting models.</p>
+                            <div class="btn-container">
+                                <a href="BI Queries.html" class="btn" target="_blank" rel="noopener noreferrer">View BI Queries</a>
+                                <a href="Forecasting Predictions.html" class="btn" target="_blank" rel="noopener noreferrer">View Forecasting Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="step-card">
+                        <div class="step-card-header"><h3>Additional Resources</h3></div>
+                        <div class="step-card-content">
+                            <p>Includes supplementary materials such as a detailed example of implementing a data security model within the pipeline's framework.</p>
+                            <div class="btn-container">
+                                <a href="California Security Model.html" class="btn" target="_blank" rel="noopener noreferrer">View Data Security Example</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2025 Kirk McGraw. All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
