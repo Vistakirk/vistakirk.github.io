@@ -4,223 +4,349 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kirk McGraw | Data Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0a2b4c; 
-            --secondary-color: #2a9d8f; 
-            --background-color: #f8f9fa;
-            --text-color: #343a40;
-            --light-gray: #e9ecef;
-            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            --primary:     #0d2d4e;
+            --accent:      #14b8a6;
+            --accent-dark: #0d9488;
+            --bg:          #f0f4f8;
+            --surface:     #ffffff;
+            --text:        #1e293b;
+            --muted:       #64748b;
+            --border:      #e2e8f0;
+            --tag-bg:      #e0f2f1;
+            --tag-text:    #0d9488;
+            --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+            --shadow-md:   0 4px 16px rgba(0,0,0,.10);
+            --shadow-lg:   0 10px 30px rgba(0,0,0,.13);
+            --radius:      12px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-        h1, h2, h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.2rem; border-bottom: 3px solid var(--secondary-color); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2.5rem;}
-        h3 { font-size: 1.4rem; }
-        p { margin-bottom: 1rem; }
-        a { color: var(--secondary-color); text-decoration: none; }
-
-        section {
-            padding: 60px 0;
-        }
-        
-        /* --- Navigation Bar --- */
+        /* ── Nav ─────────────────────────────────────────── */
         #navbar {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            width: 100%;
-            z-index: 1000;
+            z-index: 100;
+            background: rgba(255,255,255,.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
 
         #navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 20px;
+            padding: 0.9rem 20px;
         }
 
-        #navbar .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            letter-spacing: -0.02em;
         }
 
-        #navbar ul {
-            display: flex;
-            list-style: none;
-        }
+        #navbar ul { display: flex; list-style: none; gap: 0.25rem; }
 
         #navbar ul li a {
-            color: var(--primary-color);
-            padding: 1rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
+            color: var(--text);
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
         }
 
         #navbar ul li a:hover {
-            color: var(--secondary-color);
-        }
-        
-        /* --- Hero / About Section --- */
-        #about {
-            background-color: #fff;
-            text-align: center;
-            padding: 80px 0;
+            background: var(--tag-bg);
+            color: var(--accent-dark);
+            text-decoration: none;
         }
 
+        /* ── Hero ────────────────────────────────────────── */
+        #about {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a4a7a 60%, #0d6e6e 100%);
+            color: #fff;
+            padding: 100px 20px 90px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #about::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
         #about h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .about-text {
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: rgba(255,255,255,.82);
+            line-height: 1.8;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 2rem;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,.12);
+            color: rgba(255,255,255,.9);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 20px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ── Section Wrapper ─────────────────────────────── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section:not(#about):not(#contact) { padding: 72px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            color: var(--primary);
+            font-weight: 400;
             margin-bottom: 0.5rem;
         }
 
-        #about .subtitle {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            font-weight: 300;
-            margin-bottom: 1.5rem;
+        .section-header p {
+            color: var(--muted);
+            font-size: 1rem;
         }
 
-        #about .about-text {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
+        .section-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 0.75rem auto 0;
         }
 
-        /* --- Projects Section --- */
-        #projects {
-            text-align: center;
-        }
+        /* ── Project Cards ───────────────────────────────── */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            text-align: left;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1.75rem;
         }
 
         .project-card {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-accent-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
         }
 
         .project-card-content {
-            padding: 1.5rem;
-            flex-grow: 1;
+            padding: 1.6rem;
+            flex: 1;
             display: flex;
             flex-direction: column;
-        }
-        
-        .project-card-content p {
-            flex-grow: 1;
+            gap: 0.75rem;
         }
 
-        .project-card .btn {
-            display: inline-block;
-            background-color: var(--secondary-color);
+        .project-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.35;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+
+        .card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            padding: 0 1.6rem 1.6rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--primary);
             color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            font-weight: bold;
-            text-align: center;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            margin-top: 1rem;
-            align-self: flex-start;
+            padding: 0.6rem 1.1rem;
+            border-radius: 7px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.15s;
+            white-space: nowrap;
         }
 
-        .project-card .btn:hover {
-            background-color: #238a7e;
-            transform: scale(1.05);
+        .btn:hover {
+            background: var(--accent-dark);
+            transform: scale(1.03);
+            text-decoration: none;
         }
 
-        /* --- Contact Section --- */
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background: var(--tag-bg);
+            border-color: var(--accent);
+            color: var(--accent-dark);
+        }
+
+        /* ── Contact ─────────────────────────────────────── */
         #contact {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary) 0%, #1a4a7a 100%);
             color: #fff;
             text-align: center;
+            padding: 72px 20px;
         }
+
         #contact h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
             color: #fff;
-            border-color: var(--secondary-color);
+            font-weight: 400;
+            margin-bottom: 0.75rem;
         }
+
         #contact p {
-            font-size: 1.2rem;
+            color: rgba(255,255,255,.75);
             margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
         }
 
         .contact-links a {
-            color: #fff;
-            font-size: 1.1rem;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
+            color: rgba(255,255,255,.9);
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            padding: 0.55rem 1.2rem;
+            border-radius: 7px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
         }
 
         .contact-links a:hover {
-            color: var(--secondary-color);
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            text-decoration: none;
         }
 
-        /* --- Footer --- */
+        /* ── Footer ──────────────────────────────────────── */
         #footer {
-            background-color: #fff;
+            background: var(--surface);
             text-align: center;
-            padding: 1.5rem 0;
-            font-size: 0.9rem;
-            color: #6c757d;
+            padding: 1.2rem 20px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
         }
 
-        /* --- Responsive Design --- */
+        /* ── Responsive ──────────────────────────────────── */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-            
-            #navbar .container {
-                flex-direction: column;
-            }
-            #navbar ul {
-                margin-top: 0.5rem;
-            }
-            #navbar ul li a {
-                padding: 0.5rem;
-            }
+            #navbar .container { flex-direction: column; gap: 0.5rem; }
+            #navbar ul { flex-wrap: wrap; justify-content: center; }
+            .project-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -228,7 +354,7 @@
 
     <nav id="navbar">
         <div class="container">
-            <a href="#about" class="logo">Kirk McGraw Portfolio</a>
+            <a href="#about" class="logo">Kirk McGraw</a>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -238,49 +364,126 @@
     </nav>
 
     <section id="about">
-        <div class="container">
-            <h1>Hi, I'm Kirk McGraw</h1>
-            <p class="subtitle">Data Analyst | Data Engineering | Computer Vision</p>
+        <div class="hero-content">
+            <h1>Kirk McGraw</h1>
+            <p class="subtitle">Data Scientist &nbsp;&bull;&nbsp; Data Engineering &nbsp;&bull;&nbsp; Machine Learning</p>
             <p class="about-text">
-                As a data analyst in the civil engineering field, I've worked on computer vision pipelines for petabytes of complex lidar roadway data and thorough historical time series reviews. This page showcases a few of the more interesting personal and academic analyses I've done. Thanks for taking a look!
+                As a data scientist and analyst in the civil engineering field, I've built computer vision pipelines for petabytes of complex lidar roadway data and thorough historical time-series analyses. This page showcases a selection of personal and academic projects. Thanks for stopping by!
             </p>
+            <div class="hero-tags">
+                <span class="hero-tag">Python</span>
+                <span class="hero-tag">PySpark</span>
+                <span class="hero-tag">Machine Learning</span>
+                <span class="hero-tag">Computer Vision</span>
+                <span class="hero-tag">RAG / LLMs</span>
+                <span class="hero-tag">Data Pipelines</span>
+                <span class="hero-tag">R</span>
+            </div>
         </div>
     </section>
 
     <main>
         <section id="projects">
             <div class="container">
-                <h2>Projects</h2>
+                <div class="section-header">
+                    <h2>Projects</h2>
+                    <div class="section-divider"></div>
+                    <p>A collection of data science, ML, and engineering work</p>
+                </div>
                 <div class="project-grid">
+
+                    <!-- Collabrium -->
                     <div class="project-card">
+                        <div class="card-accent-bar"></div>
                         <div class="project-card-content">
-                            <h3>Quantitative Finance Strategy utilizing Machine Learning</h3>
-                            <p>Robust financial timeseries workflow implementing pairs trading mean-reversion with random forest classification, as well as Augmented Dicky-Fuller and Breusch–Pagan testing for statistical validity.</p>
-                            <a href="Quant Finance/Kirk McGraw Quant Project.html" class="btn" target="_blank" rel="noopener noreferrer">View Quantitative Finance Strategy</a>
+                            <h3>Collabrium — AI-Powered Collaboration Platform</h3>
+                            <p>Multi-modal RAG platform that lets small teams ingest PDFs, images, and math-heavy documents into a secure vector store, then query them through an intelligent AI teammate. Built as a Harvard AC215 capstone project.</p>
+                            <div class="tag-list">
+                                <span class="tag">RAG</span>
+                                <span class="tag">ChromaDB</span>
+                                <span class="tag">VertexAI</span>
+                                <span class="tag">CLIP</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Python</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-card-content">
-                            <h3>PPE Object Detection</h3>
-                            <p>Comparative investigation of R-CNN vs. Transformer object detection models on personal protective equipment data. Models can monitor PPE non-compliance in industry, preventing fines and liability.</p>
-                            <a href="Computer Vision/Kirk McGraw PPE Object Detection.html" class="btn" target="_blank" rel="noopener noreferrer">View Model Comparison</a>
+                        <div class="card-actions">
+                            <a href="Collabrium/index.html" class="btn" target="_blank" rel="noopener noreferrer">View Project</a>
+                            <a href="https://github.com/markelliott-git/AC215_collabrium/tree/milestone2" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
                         </div>
                     </div>
 
+                    <!-- Quant Finance -->
                     <div class="project-card">
+                        <div class="card-accent-bar"></div>
                         <div class="project-card-content">
-                            <h3>Data Engineering Lakehouse</h3>
-                            <p>Complete end-to-end ML data pipeline incorporating bronze, silver, and gold lakehouse schema with PySpark. The resulting architecture feeds both BI and ML business needs efficiently.</p>
-                            <a href="DE Pipeline/DE Project index.html" class="btn" target="_blank" rel="noopener noreferrer">View DE Project</a>
+                            <h3>Quantitative Finance Strategy with Machine Learning</h3>
+                            <p>Robust financial time-series workflow implementing pairs-trading mean-reversion with random forest classification, plus Augmented Dickey-Fuller and Breusch-Pagan testing for statistical validity.</p>
+                            <div class="tag-list">
+                                <span class="tag">Python</span>
+                                <span class="tag">Pairs Trading</span>
+                                <span class="tag">Random Forest</span>
+                                <span class="tag">Time Series</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="Quant Finance/Kirk McGraw Quant Project.html" class="btn" target="_blank" rel="noopener noreferrer">View Project</a>
                         </div>
                     </div>
+
+                    <!-- Computer Vision -->
                     <div class="project-card">
+                        <div class="card-accent-bar"></div>
+                        <div class="project-card-content">
+                            <h3>PPE Object Detection — R-CNN vs. Transformer</h3>
+                            <p>Comparative investigation of R-CNN vs. Transformer object detection models on personal protective equipment data. Models can monitor PPE non-compliance in industry, preventing fines and liability.</p>
+                            <div class="tag-list">
+                                <span class="tag">Computer Vision</span>
+                                <span class="tag">R-CNN</span>
+                                <span class="tag">Transformers</span>
+                                <span class="tag">Python</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="Computer Vision/Kirk McGraw PPE Object Detection.html" class="btn" target="_blank" rel="noopener noreferrer">View Project</a>
+                        </div>
+                    </div>
+
+                    <!-- DE Pipeline -->
+                    <div class="project-card">
+                        <div class="card-accent-bar"></div>
+                        <div class="project-card-content">
+                            <h3>Data Engineering Lakehouse</h3>
+                            <p>Complete end-to-end ML data pipeline with a bronze/silver/gold lakehouse schema built on PySpark. The resulting architecture feeds both BI and ML business needs efficiently.</p>
+                            <div class="tag-list">
+                                <span class="tag">PySpark</span>
+                                <span class="tag">Lakehouse</span>
+                                <span class="tag">Delta Lake</span>
+                                <span class="tag">ETL</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="DE Pipeline/DE Project index.html" class="btn" target="_blank" rel="noopener noreferrer">View Project</a>
+                        </div>
+                    </div>
+
+                    <!-- Bird Strikes -->
+                    <div class="project-card">
+                        <div class="card-accent-bar"></div>
                         <div class="project-card-content">
                             <h3>Bird Strikes and You</h3>
-                            <p>A logistic regression analysis in R to determine what factors influence birdstrikes. Mass of the animal and season were most predictive of higher repair costs, and ways to avoid expensive bills were recommended to airlines.</p>
+                            <p>A logistic regression analysis in R to determine what factors influence bird-strike damage costs. Animal mass and season were most predictive, and actionable recommendations were provided to airlines.</p>
+                            <div class="tag-list">
+                                <span class="tag">R</span>
+                                <span class="tag">Logistic Regression</span>
+                                <span class="tag">Statistics</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
                             <a href="Birdstrikes/Bird Strikes and You, by Kirk McGraw, Dan Monahan, David yu.pdf" class="btn" target="_blank" rel="noopener noreferrer">View Analysis (PDF)</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -289,13 +492,11 @@
     <section id="contact">
         <div class="container">
             <h2>Get In Touch</h2>
-            <p>If you'd like to reach out, here's a few ways to contact me.</p>
+            <p>If you'd like to reach out, here are a few ways to contact me.</p>
             <div class="contact-links">
-                <a href="kim449@g.harvard.edu">kim449@g.harvard.edu</a>
-                <span aria-hidden="true">|</span>
-                <a href="https://github.com/Vistakirk" target="_blank" rel="noopener noreferrer">https://github.com/Vistakirk</a>
-                <span aria-hidden="true">|</span>
-                <a href="#">(850) 567-9173</a>
+                <a href="mailto:kim449@g.harvard.edu">kim449@g.harvard.edu</a>
+                <a href="https://github.com/Vistakirk" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="tel:8505679173">(850) 567-9173</a>
             </div>
         </div>
     </section>

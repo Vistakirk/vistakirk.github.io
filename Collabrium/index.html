@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collabrium | Kirk McGraw Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary:     #0d2d4e;
+            --accent:      #14b8a6;
+            --accent-dark: #0d9488;
+            --bg:          #f0f4f8;
+            --surface:     #ffffff;
+            --text:        #1e293b;
+            --muted:       #64748b;
+            --border:      #e2e8f0;
+            --tag-bg:      #e0f2f1;
+            --tag-text:    #0d9488;
+            --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+            --shadow-md:   0 4px 16px rgba(0,0,0,.10);
+            --shadow-lg:   0 10px 30px rgba(0,0,0,.13);
+            --radius:      12px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ── Nav ─────────────────────────────────────────── */
+        #navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        #navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 20px;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        #navbar ul { display: flex; list-style: none; gap: 0.25rem; }
+
+        #navbar ul li a {
+            color: var(--text);
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #navbar ul li a:hover {
+            background: var(--tag-bg);
+            color: var(--accent-dark);
+            text-decoration: none;
+        }
+
+        /* ── Hero ────────────────────────────────────────── */
+        #hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a4a7a 60%, #0d6e6e 100%);
+            color: #fff;
+            padding: 90px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(20,184,166,.25);
+            border: 1px solid rgba(20,184,166,.5);
+            color: var(--accent);
+            border-radius: 20px;
+            padding: 0.3rem 1rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+
+        #hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.4rem, 6vw, 3.6rem);
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,.75);
+            max-width: 580px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.65rem 1.3rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.15s, border-color 0.2s;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .btn:hover { text-decoration: none; transform: scale(1.04); }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover { background: var(--accent-dark); }
+
+        .btn-ghost {
+            background: rgba(255,255,255,.12);
+            border: 1.5px solid rgba(255,255,255,.3);
+            color: #fff;
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,.2); }
+
+        /* ── Page Body ───────────────────────────────────── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .content-section + .content-section {
+            border-top: 1px solid var(--border);
+            padding-top: 56px;
+        }
+
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2rem);
+            color: var(--primary);
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+        }
+
+        p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
+        p:last-child { margin-bottom: 0; }
+
+        /* ── Tag Pills ───────────────────────────────────── */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            border-radius: 20px;
+            padding: 0.25rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ── Feature Cards ───────────────────────────────── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.4rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card h3 {
+            font-size: 0.97rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.45rem;
+        }
+
+        .feature-card p {
+            font-size: 0.88rem;
+            margin: 0;
+        }
+
+        /* ── Architecture Flow ───────────────────────────── */
+        .arch-flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0;
+            align-items: center;
+            margin-top: 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .arch-step {
+            flex: 1;
+            min-width: 130px;
+            text-align: center;
+            padding: 0.75rem 0.5rem;
+        }
+
+        .arch-step-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .arch-step-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .arch-step-sub {
+            font-size: 0.76rem;
+            color: var(--muted);
+        }
+
+        .arch-arrow {
+            color: var(--accent);
+            font-size: 1.3rem;
+            padding: 0 0.25rem;
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        /* ── Team ────────────────────────────────────────── */
+        .team-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.75rem;
+        }
+
+        .team-member {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.45rem 1rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ── CTA Bar ─────────────────────────────────────── */
+        .cta-bar {
+            background: linear-gradient(135deg, var(--primary), #1a4a7a);
+            border-radius: var(--radius);
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .cta-bar h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .cta-bar p {
+            color: rgba(255,255,255,.7);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .cta-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+
+        /* ── Back Link ───────────────────────────────────── */
+        .back-link-wrap {
+            padding: 1rem 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--accent-dark); text-decoration: none; }
+
+        /* ── Footer ──────────────────────────────────────── */
+        #footer {
+            background: var(--surface);
+            text-align: center;
+            padding: 1.2rem 20px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 640px) {
+            .arch-flow { flex-direction: column; }
+            .arch-arrow { transform: rotate(90deg); }
+            .cta-bar { flex-direction: column; text-align: center; }
+            .cta-actions { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Kirk McGraw</a>
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero">
+        <div class="hero-content">
+            <span class="hero-eyebrow">Harvard AC215 Capstone &bull; 2024</span>
+            <h1>Collabrium</h1>
+            <p class="hero-subtitle">
+                An AI-powered SaaS collaboration platform that gives small teams a secure, intelligent teammate capable of understanding documents, images, and complex mathematical content.
+            </p>
+            <div class="hero-actions">
+                <a href="https://github.com/markelliott-git/AC215_collabrium/tree/milestone2"
+                   class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    &#128196; View on GitHub
+                </a>
+                <a href="https://medium.com/institute-for-applied-computational-science/collabrium-collaboration-platform-with-built-in-ai-teammate-225514978043"
+                   class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                    &#128240; Read on Medium
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="back-link-wrap">
+        <a href="../index.html" class="back-link">&#8592; Back to Portfolio</a>
+    </div>
+
+    <div class="container">
+
+        <!-- Overview -->
+        <div class="content-section">
+            <p class="section-label">Overview</p>
+            <h2>What is Collabrium?</h2>
+            <div class="tag-list">
+                <span class="tag">RAG</span>
+                <span class="tag">ChromaDB</span>
+                <span class="tag">Google VertexAI</span>
+                <span class="tag">CLIP</span>
+                <span class="tag">HuggingFace</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Python</span>
+                <span class="tag">JavaScript</span>
+            </div>
+            <p>
+                Collabrium is a multi-modal Retrieval-Augmented Generation (RAG) platform designed for small teams that need to collaborate around complex, compliance-sensitive documents. Rather than relying on a generic chatbot, teams upload their own materials — PDFs, reports, research papers — and interact with an AI teammate that has actually read and indexed their content.
+            </p>
+            <p>
+                The platform ingests PDFs and intelligently extracts text, images, figure captions, and LaTeX-style mathematical notation into specialized vector stores. Each content type uses an embedding model best suited to it, resulting in far more accurate retrieval than single-modality approaches.
+            </p>
+            <p>
+                Built as part of Harvard's AC215 Applied Machine Learning course, the project demonstrates a production-grade MLOps workflow — from Docker-based development environments to a modular ingestion pipeline that can be extended with new data sources and embedding strategies.
+            </p>
+        </div>
+
+        <!-- Architecture -->
+        <div class="content-section">
+            <p class="section-label">Architecture</p>
+            <h2>How It Works</h2>
+            <p>Collabrium's pipeline routes each content type through the embedding model best suited to it, then uses Reciprocal Rank Fusion to combine results from multiple vector stores at query time.</p>
+
+            <div class="arch-flow">
+                <div class="arch-step">
+                    <span class="arch-step-icon">&#128196;</span>
+                    <span class="arch-step-label">PDF Ingestion</span>
+                    <span class="arch-step-sub">Smart chunking &amp; content-type detection</span>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">&#127987;</span>
+                    <span class="arch-step-label">Multi-Modal Embedding</span>
+                    <span class="arch-step-sub">VertexAI text &bull; CLIP images &bull; HuggingFace math</span>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">&#128202;</span>
+                    <span class="arch-step-label">ChromaDB</span>
+                    <span class="arch-step-sub">Separate vector stores per modality</span>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">&#128269;</span>
+                    <span class="arch-step-label">CustomRAG Retriever</span>
+                    <span class="arch-step-sub">Reciprocal Rank Fusion across stores</span>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-step">
+                    <span class="arch-step-icon">&#129302;</span>
+                    <span class="arch-step-label">AI Teammate</span>
+                    <span class="arch-step-sub">Grounded, context-aware responses</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Features -->
+        <div class="content-section">
+            <p class="section-label">Features</p>
+            <h2>Key Capabilities</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128206;</div>
+                    <h3>Multi-Modal Document Processing</h3>
+                    <p>Extracts text, images, figure captions, and LaTeX math from PDFs, routing each to a specialist embedding model for optimal retrieval.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128200;</div>
+                    <h3>Reciprocal Rank Fusion</h3>
+                    <p>The CustomRAGRetriever combines ranked results from multiple vector stores to improve relevance when a query spans multiple content types.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128274;</div>
+                    <h3>Secure &amp; Compliance-Friendly</h3>
+                    <p>Designed from the ground up for teams with compliance requirements — your documents stay in your vector store, not a third-party training pipeline.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128736;</div>
+                    <h3>Containerized MLOps</h3>
+                    <p>Docker Compose development environment with Jupyter Lab. Code changes persist on disk, enabling a fast iteration loop without rebuilding images.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#129518;</div>
+                    <h3>Math-Aware Embeddings</h3>
+                    <p>HuggingFace models handle LaTeX-style mathematical notation that general-purpose text embedders routinely misrepresent.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128247;</div>
+                    <h3>Image Understanding via CLIP</h3>
+                    <p>CLIP embeddings let users query figures, charts, and diagrams in natural language, not just the surrounding text.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="content-section">
+            <p class="section-label">Technology</p>
+            <h2>Stack &amp; Tools</h2>
+            <p>The project is primarily Python (42% of codebase) with JavaScript/CSS for frontend components, containerized via Docker.</p>
+
+            <table style="width:100%; border-collapse:collapse; margin-top:1rem; font-size:0.9rem;">
+                <thead>
+                    <tr style="background:var(--tag-bg);">
+                        <th style="text-align:left; padding:0.7rem 1rem; color:var(--primary); border-radius:8px 0 0 0;">Category</th>
+                        <th style="text-align:left; padding:0.7rem 1rem; color:var(--primary); border-radius:0 8px 0 0;">Technology</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:0.65rem 1rem; font-weight:600; color:var(--text);">Vector Database</td>
+                        <td style="padding:0.65rem 1rem; color:var(--muted);">ChromaDB</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border); background:#fafbfc;">
+                        <td style="padding:0.65rem 1rem; font-weight:600; color:var(--text);">Text Embeddings</td>
+                        <td style="padding:0.65rem 1rem; color:var(--muted);">Google VertexAI</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:0.65rem 1rem; font-weight:600; color:var(--text);">Image Embeddings</td>
+                        <td style="padding:0.65rem 1rem; color:var(--muted);">CLIP (OpenAI)</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border); background:#fafbfc;">
+                        <td style="padding:0.65rem 1rem; font-weight:600; color:var(--text);">Math Embeddings</td>
+                        <td style="padding:0.65rem 1rem; color:var(--muted);">HuggingFace Transformers</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:0.65rem 1rem; font-weight:600; color:var(--text);">Infrastructure</td>
+                        <td style="padding:0.65rem 1rem; color:var(--muted);">Docker, Docker Compose, Jupyter Lab</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:0.65rem 1rem; font-weight:600; color:var(--text);">Languages</td>
+                        <td style="padding:0.65rem 1rem; color:var(--muted);">Python, JavaScript, CSS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Team -->
+        <div class="content-section">
+            <p class="section-label">Team</p>
+            <h2>Project Contributors</h2>
+            <p>Collabrium was a team capstone project for Harvard's AC215 Applied Machine Learning Engineering course.</p>
+            <div class="team-list">
+                <span class="team-member">Mark Elliott</span>
+                <span class="team-member">Kirk McGraw</span>
+                <span class="team-member">Patrick Nguyen</span>
+                <span class="team-member">Bentre Nguyen</span>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-bar">
+            <div>
+                <h3>Explore the full project</h3>
+                <p>Source code, architecture docs, and a write-up on Medium</p>
+            </div>
+            <div class="cta-actions">
+                <a href="https://github.com/markelliott-git/AC215_collabrium/tree/milestone2"
+                   class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    &#128196; GitHub Repository
+                </a>
+                <a href="https://medium.com/institute-for-applied-computational-science/collabrium-collaboration-platform-with-built-in-ai-teammate-225514978043"
+                   class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                    &#128240; Medium Article
+                </a>
+            </div>
+        </div>
+
+    </div><!-- /.container -->
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2025 Kirk McGraw. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
