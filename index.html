@@ -192,7 +192,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border);
-            overflow: hidden;
+            overflow: visible;
             display: flex;
             flex-direction: column;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -206,6 +206,7 @@
         .card-accent-bar {
             height: 4px;
             background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: var(--radius) var(--radius) 0 0;
         }
 
         .project-card-content {
@@ -223,7 +224,15 @@
             line-height: 1.35;
         }
 
-        .project-card p {
+        .project-date {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--muted);
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .project-card p:not(.project-date) {
             color: var(--muted);
             font-size: 0.92rem;
             line-height: 1.7;
@@ -342,6 +351,62 @@
             border-top: 1px solid var(--border);
         }
 
+        /* ── Tooltips ────────────────────────────────────── */
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+            text-decoration: underline dotted rgba(0,0,0,.3);
+            text-underline-offset: 2px;
+        }
+
+        .hero-tag[data-tooltip] {
+            text-decoration: underline dotted rgba(255,255,255,.45);
+        }
+
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 9px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 0.55rem 0.8rem;
+            border-radius: 7px;
+            font-size: 0.78rem;
+            font-weight: 400;
+            line-height: 1.55;
+            white-space: normal;
+            width: max-content;
+            max-width: 230px;
+            text-align: center;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.18s ease;
+            z-index: 500;
+            box-shadow: var(--shadow-lg);
+            text-decoration: none;
+        }
+
+        [data-tooltip]::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 3px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--primary);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.18s ease;
+            z-index: 500;
+        }
+
+        [data-tooltip]:hover::after,
+        [data-tooltip]:hover::before,
+        [data-tooltip].tooltip-active::after,
+        [data-tooltip].tooltip-active::before { opacity: 1; }
+
         /* ── Responsive ──────────────────────────────────── */
         @media (max-width: 768px) {
             #navbar .container { flex-direction: column; gap: 0.5rem; }
@@ -371,13 +436,13 @@
                 As a data scientist and analyst in the civil engineering field, I've built computer vision pipelines for petabytes of complex lidar roadway data and thorough historical time-series analyses. This page showcases a selection of personal and academic projects. Thanks for stopping by!
             </p>
             <div class="hero-tags">
-                <span class="hero-tag">Python</span>
-                <span class="hero-tag">PySpark</span>
-                <span class="hero-tag">Machine Learning</span>
-                <span class="hero-tag">Computer Vision</span>
-                <span class="hero-tag">RAG / LLMs</span>
-                <span class="hero-tag">Data Pipelines</span>
-                <span class="hero-tag">R</span>
+                <span class="hero-tag" data-tooltip="A popular, beginner-friendly programming language that is the standard tool of data science and AI.">Python</span>
+                <span class="hero-tag" data-tooltip="A Python library for processing massive datasets across many computers at once — useful when data is too large for a single machine.">PySpark</span>
+                <span class="hero-tag" data-tooltip="Teaching computers to recognize patterns in data and make predictions, rather than following manually written rules.">Machine Learning</span>
+                <span class="hero-tag" data-tooltip="AI that can interpret and analyze images or video, similar to how human eyesight works.">Computer Vision</span>
+                <span class="hero-tag" data-tooltip="RAG (Retrieval-Augmented Generation) lets an AI answer questions using your own documents. LLMs (Large Language Models) are AI systems trained on vast text to understand and generate human language.">RAG / LLMs</span>
+                <span class="hero-tag" data-tooltip="Automated workflows that move, clean, and organize raw data from source systems into a usable format.">Data Pipelines</span>
+                <span class="hero-tag" data-tooltip="A programming language designed specifically for statistics and data visualization.">R</span>
             </div>
         </div>
     </section>
@@ -392,19 +457,40 @@
                 </div>
                 <div class="project-grid">
 
+                    <!-- Lock of the Week -->
+                    <div class="project-card">
+                        <div class="card-accent-bar"></div>
+                        <div class="project-card-content">
+                            <p class="project-date">Spring 2026</p>
+                            <h3>Lockoftheweek.com — College Football Pick'em App</h3>
+                            <p>Full-stack college football office pool web app. Each week a league commissioner selects NCAA matchups; league members pick winners and rank them 1–10 by their confidence the teams they choose will win. Picks lock Saturday at noon, standings update live as scores roll in.</p>
+                            <div class="tag-list">
+                                <span class="tag" data-tooltip="A popular JavaScript library for building interactive user interfaces from reusable components.">React</span>
+                                <span class="tag" data-tooltip="A typed superset of JavaScript that catches errors at compile time, making large codebases easier to maintain.">TypeScript</span>
+                                <span class="tag" data-tooltip="A JavaScript runtime for building fast, scalable server-side applications.">Node.js</span>
+                                <span class="tag" data-tooltip="A powerful open-source relational database known for reliability and advanced querying capabilities.">PostgreSQL</span>
+                                <span class="tag" data-tooltip="A tool that packages software and all its dependencies into a portable container, so it runs identically on any computer.">Docker</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://lockoftheweek.com" class="btn" target="_blank" rel="noopener noreferrer">Visit Site</a>
+                        </div>
+                    </div>
+
                     <!-- Collabrium -->
                     <div class="project-card">
                         <div class="card-accent-bar"></div>
                         <div class="project-card-content">
+                            <p class="project-date">Winter 2025</p>
                             <h3>Collabrium — AI-Powered Collaboration Platform</h3>
                             <p>Multi-modal RAG platform that lets small teams ingest PDFs, images, and math-heavy documents into a secure vector store, then query them through an intelligent AI teammate. Built as a Harvard AC215 capstone project.</p>
                             <div class="tag-list">
-                                <span class="tag">RAG</span>
-                                <span class="tag">ChromaDB</span>
-                                <span class="tag">VertexAI</span>
-                                <span class="tag">CLIP</span>
-                                <span class="tag">Docker</span>
-                                <span class="tag">Python</span>
+                                <span class="tag" data-tooltip="Retrieval-Augmented Generation — an AI technique that grounds responses in a specific set of documents, reducing made-up answers.">RAG</span>
+                                <span class="tag" data-tooltip="An open-source database that stores documents as numerical fingerprints, enabling fast semantic (meaning-based) search.">ChromaDB</span>
+                                <span class="tag" data-tooltip="Google Cloud's managed platform for training and deploying AI and machine learning models.">VertexAI</span>
+                                <span class="tag" data-tooltip="A neural network that understands both images and text together, enabling cross-media search (e.g., find images using a text description).">CLIP</span>
+                                <span class="tag" data-tooltip="A tool that packages software and all its dependencies into a portable container, so it runs identically on any computer.">Docker</span>
+                                <span class="tag" data-tooltip="A popular, beginner-friendly programming language that is the standard tool of data science and AI.">Python</span>
                             </div>
                         </div>
                         <div class="card-actions">
@@ -417,13 +503,14 @@
                     <div class="project-card">
                         <div class="card-accent-bar"></div>
                         <div class="project-card-content">
+                            <p class="project-date">Summer 2025</p>
                             <h3>Quantitative Finance Strategy with Machine Learning</h3>
                             <p>Robust financial time-series workflow implementing pairs-trading mean-reversion with random forest classification, plus Augmented Dickey-Fuller and Breusch-Pagan testing for statistical validity.</p>
                             <div class="tag-list">
-                                <span class="tag">Python</span>
-                                <span class="tag">Pairs Trading</span>
-                                <span class="tag">Random Forest</span>
-                                <span class="tag">Time Series</span>
+                                <span class="tag" data-tooltip="A popular, beginner-friendly programming language that is the standard tool of data science and AI.">Python</span>
+                                <span class="tag" data-tooltip="A market-neutral strategy that bets two historically correlated stocks will converge back together after temporarily diverging in price.">Pairs Trading</span>
+                                <span class="tag" data-tooltip="A machine learning model that combines hundreds of simple decision trees to produce more accurate, reliable predictions.">Random Forest</span>
+                                <span class="tag" data-tooltip="Data recorded at regular intervals over time (e.g., daily stock prices), analyzed to spot trends, seasonality, and make forecasts.">Time Series</span>
                             </div>
                         </div>
                         <div class="card-actions">
@@ -435,13 +522,14 @@
                     <div class="project-card">
                         <div class="card-accent-bar"></div>
                         <div class="project-card-content">
+                            <p class="project-date">Spring 2025</p>
                             <h3>PPE Object Detection — R-CNN vs. Transformer</h3>
                             <p>Comparative investigation of R-CNN vs. Transformer object detection models on personal protective equipment data. Models can monitor PPE non-compliance in industry, preventing fines and liability.</p>
                             <div class="tag-list">
-                                <span class="tag">Computer Vision</span>
-                                <span class="tag">R-CNN</span>
-                                <span class="tag">Transformers</span>
-                                <span class="tag">Python</span>
+                                <span class="tag" data-tooltip="AI that can interpret and analyze images or video, similar to how human eyesight works.">Computer Vision</span>
+                                <span class="tag" data-tooltip="Region-based Convolutional Neural Network — an object detection architecture that locates and identifies specific objects within images.">R-CNN</span>
+                                <span class="tag" data-tooltip="A neural network architecture that uses &quot;attention&quot; to weigh the importance of different parts of an input — the foundation of modern AI models like ChatGPT.">Transformers</span>
+                                <span class="tag" data-tooltip="A popular, beginner-friendly programming language that is the standard tool of data science and AI.">Python</span>
                             </div>
                         </div>
                         <div class="card-actions">
@@ -453,13 +541,14 @@
                     <div class="project-card">
                         <div class="card-accent-bar"></div>
                         <div class="project-card-content">
+                            <p class="project-date">Winter 2024</p>
                             <h3>Data Engineering Lakehouse</h3>
                             <p>Complete end-to-end ML data pipeline with a bronze/silver/gold lakehouse schema built on PySpark. The resulting architecture feeds both BI and ML business needs efficiently.</p>
                             <div class="tag-list">
-                                <span class="tag">PySpark</span>
-                                <span class="tag">Lakehouse</span>
-                                <span class="tag">Delta Lake</span>
-                                <span class="tag">ETL</span>
+                                <span class="tag" data-tooltip="A Python library for processing massive datasets across many computers at once — useful when data is too large for a single machine.">PySpark</span>
+                                <span class="tag" data-tooltip="A data architecture that combines the raw storage of a data lake with the organized query performance of a data warehouse.">Lakehouse</span>
+                                <span class="tag" data-tooltip="An open-source storage layer that adds reliability and versioning to large data lakes, similar to a save-history feature for data.">Delta Lake</span>
+                                <span class="tag" data-tooltip="Extract, Transform, Load — the process of pulling raw data from sources, cleaning and reshaping it, then loading it into a destination for analysis.">ETL</span>
                             </div>
                         </div>
                         <div class="card-actions">
@@ -489,12 +578,13 @@
                     <div class="project-card">
                         <div class="card-accent-bar"></div>
                         <div class="project-card-content">
+                            <p class="project-date">Summer 2024</p>
                             <h3>Bird Strikes and You</h3>
                             <p>A logistic regression analysis in R to determine what factors influence bird-strike damage costs. Animal mass and season were most predictive, and actionable recommendations were provided to airlines.</p>
                             <div class="tag-list">
-                                <span class="tag">R</span>
-                                <span class="tag">Logistic Regression</span>
-                                <span class="tag">Statistics</span>
+                                <span class="tag" data-tooltip="A programming language designed specifically for statistics and data visualization.">R</span>
+                                <span class="tag" data-tooltip="A statistical model that estimates the probability of a yes/no outcome (e.g., will this strike cause damage?) based on input variables.">Logistic Regression</span>
+                                <span class="tag" data-tooltip="The science of collecting, analyzing, and interpreting numerical data to draw meaningful conclusions.">Statistics</span>
                             </div>
                         </div>
                         <div class="card-actions">
@@ -525,5 +615,24 @@
         </div>
     </footer>
 
+    <script>
+        // Mobile tooltip support: tap to show, tap elsewhere to dismiss
+        document.querySelectorAll('[data-tooltip]').forEach(el => {
+            el.addEventListener('touchstart', e => {
+                const isActive = el.classList.contains('tooltip-active');
+                document.querySelectorAll('.tooltip-active').forEach(t => t.classList.remove('tooltip-active'));
+                if (!isActive) {
+                    el.classList.add('tooltip-active');
+                    e.preventDefault(); // prevent immediate link/button activation on first tap
+                }
+            }, { passive: false });
+        });
+
+        document.addEventListener('touchstart', e => {
+            if (!e.target.closest('[data-tooltip]')) {
+                document.querySelectorAll('.tooltip-active').forEach(t => t.classList.remove('tooltip-active'));
+            }
+        });
+    </script>
 </body>
 </html>
