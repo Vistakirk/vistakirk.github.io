@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Data Analytics | Kirk McGraw</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary:     #0d2d4e;
+            --accent:      #14b8a6;
+            --accent-dark: #0d9488;
+            --bg:          #f0f4f8;
+            --surface:     #ffffff;
+            --text:        #1e293b;
+            --muted:       #64748b;
+            --border:      #e2e8f0;
+            --tag-bg:      #e0f2f1;
+            --tag-text:    #0d9488;
+            --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+            --shadow-md:   0 4px 16px rgba(0,0,0,.10);
+            --shadow-lg:   0 10px 30px rgba(0,0,0,.13);
+            --radius:      12px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Nav */
+        #navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        #navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 20px;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .back-link:hover {
+            background: var(--tag-bg);
+            color: var(--accent-dark);
+            text-decoration: none;
+        }
+
+        /* Main */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        main { flex: 1; padding: 72px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            color: var(--primary);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p { color: var(--muted); font-size: 1rem; }
+
+        .section-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 0.75rem auto 0;
+        }
+
+        /* Three-panel grid */
+        .panel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+        }
+
+        .panel-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .panel-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-accent-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+        }
+
+        .panel-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2f1 100%);
+            font-size: 2.8rem;
+        }
+
+        .panel-card-content {
+            padding: 1.5rem 1.6rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .panel-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.35;
+        }
+
+        .panel-card p {
+            color: var(--muted);
+            font-size: 0.91rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+
+        a.panel-card {
+            color: inherit;
+            cursor: pointer;
+        }
+
+        a.panel-card:hover { text-decoration: none; }
+
+        /* Footer */
+        #footer {
+            background: var(--surface);
+            text-align: center;
+            padding: 1.2rem 20px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            .panel-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            #navbar .container { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Kirk McGraw</a>
+            <a href="../index.html" class="back-link">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="section-header">
+                <h2>Select an Analysis</h2>
+                <div class="section-divider"></div>
+                <p>Three interactive visualizations, just click on a panel to explore!</p>
+            </div>
+
+            <div class="panel-grid">
+
+                <a class="panel-card" href="trend_map.html" target="_blank" rel="noopener noreferrer">
+                    <div class="card-accent-bar"></div>
+                    <div class="panel-icon">🗺️</div>
+                    <div class="panel-card-content">
+                        <h3>Coastal City Trend Map</h3>
+                        <p>A geospatial overview of the full 309-city dataset spanning 1966–2026, mapping temperature and precipitation trends onto their geographic context to surface regional climate patterns.</p>
+                        <div class="tag-list">
+                            <span class="tag">Geospatial</span>
+                            <span class="tag">Coastal Cities</span>
+                            <span class="tag">309 Cities</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="panel-card" href="precip_trends.html" target="_blank" rel="noopener noreferrer">
+                    <div class="card-accent-bar"></div>
+                    <div class="panel-icon">🌧️</div>
+                    <div class="panel-card-content">
+                        <h3>Precipitation Trends</h3>
+                        <p>A bubble chart mapping each city's rate of change in wet-day frequency against its rate of change in total annual precipitation. Are cities getting wetter, drier, or just more extreme?</p>
+                        <div class="tag-list">
+                            <span class="tag">Precipitation</span>
+                            <span class="tag">Trend Analysis</span>
+                            <span class="tag">Multi-Dimensional</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="panel-card" href="crossocean_gap.html" target="_blank" rel="noopener noreferrer">
+                    <div class="card-accent-bar"></div>
+                    <div class="panel-icon">🌊</div>
+                    <div class="panel-card-content">
+                        <h3>Cross-Ocean Temperature Gap</h3>
+                        <p>Tracks the temperature differential between Western European and US East Coast cities at comparable latitudes which is a signal of Gulf Stream heat transport and whether it is shifting over time.</p>
+                        <div class="tag-list">
+                            <span class="tag">SST</span>
+                            <span class="tag">Gulf Stream</span>
+                            <span class="tag">Time Series</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2025 Kirk McGraw. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
