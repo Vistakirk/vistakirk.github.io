@@ -84,7 +84,7 @@
         #about {
             background: linear-gradient(135deg, var(--primary) 0%, #1a4a7a 60%, #0d6e6e 100%);
             color: #fff;
-            padding: 100px 20px 90px;
+            padding: 36px 20px 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -104,7 +104,7 @@
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 400;
             color: #fff;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             letter-spacing: -0.03em;
         }
 
@@ -115,7 +115,7 @@
             letter-spacing: 0.04em;
             text-transform: uppercase;
             font-size: 0.95rem;
-            margin-bottom: 1.75rem;
+            margin-bottom: 0.65rem;
         }
 
         .about-text {
@@ -123,7 +123,7 @@
             margin: 0 auto;
             font-size: 1.05rem;
             color: rgba(255,255,255,.82);
-            line-height: 1.8;
+            line-height: 1.65;
         }
 
         .hero-tags {
@@ -131,7 +131,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 0.6rem;
-            margin-top: 2rem;
+            margin-top: 0.85rem;
         }
 
         .hero-tag {
@@ -152,11 +152,11 @@
             padding: 0 20px;
         }
 
-        section:not(#about):not(#contact) { padding: 72px 0; }
+        section:not(#about):not(#contact) { padding: 32px 0; }
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1.25rem;
         }
 
         .section-header h2 {
@@ -177,14 +177,14 @@
             height: 3px;
             background: var(--accent);
             border-radius: 2px;
-            margin: 0.75rem auto 0;
+            margin: 0.4rem auto 0;
         }
 
         /* ── Project Cards ───────────────────────────────── */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 1.75rem;
+            gap: 1.1rem;
         }
 
         .project-card {
@@ -210,11 +210,11 @@
         }
 
         .project-card-content {
-            padding: 1.6rem;
+            padding: 1.1rem;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .project-card h3 {
@@ -259,7 +259,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
-            padding: 0 1.6rem 1.6rem;
+            padding: 0 1.1rem 1.1rem;
         }
 
         .btn {
@@ -299,7 +299,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, #1a4a7a 100%);
             color: #fff;
             text-align: center;
-            padding: 72px 20px;
+            padding: 32px 20px;
         }
 
         #contact h2 {
@@ -312,7 +312,7 @@
 
         #contact p {
             color: rgba(255,255,255,.75);
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
             font-size: 1rem;
         }
 
@@ -431,13 +431,13 @@
     <section id="about">
         <div class="hero-content">
             <h1>Kirk McGraw</h1>
-            <p class="subtitle">Data Scientist &nbsp;&bull;&nbsp; Data Engineering &nbsp;&bull;&nbsp; Machine Learning</p>
+            <p class="subtitle">Data Science &nbsp;&bull;&nbsp; Data Engineering &nbsp;&bull;&nbsp; Machine Learning</p>
             <p class="about-text">
                 As a data scientist and analyst in the civil engineering field, I've built computer vision pipelines for petabytes of complex lidar roadway data and thorough historical time-series analyses. This page showcases a selection of personal and academic projects. Thanks for stopping by!
             </p>
             <div class="hero-tags">
                 <span class="hero-tag" data-tooltip="A popular, beginner-friendly programming language that is the standard tool of data science and AI.">Python</span>
-                <span class="hero-tag" data-tooltip="A Python library for processing massive datasets across many computers at once — useful when data is too large for a single machine.">PySpark</span>
+                <span class="hero-tag" data-tooltip="A Python library for processing massive datasets across many computers at once, useful when data is too large for a single machine.">PySpark</span>
                 <span class="hero-tag" data-tooltip="Teaching computers to recognize patterns in data and make predictions, rather than following manually written rules.">Machine Learning</span>
                 <span class="hero-tag" data-tooltip="AI that can interpret and analyze images or video, similar to how human eyesight works.">Computer Vision</span>
                 <span class="hero-tag" data-tooltip="RAG (Retrieval-Augmented Generation) lets an AI answer questions using your own documents. LLMs (Large Language Models) are AI systems trained on vast text to understand and generate human language.">RAG / LLMs</span>
@@ -446,7 +446,6 @@
             </div>
         </div>
     </section>
-
     <main>
         <section id="projects">
             <div class="container">
@@ -504,7 +503,7 @@
                             <h3>Collabrium — AI-Powered Collaboration Platform</h3>
                             <p>Multi-modal RAG platform that lets small teams ingest PDFs, images, and math-heavy documents into a secure vector store, then query them through an intelligent AI teammate. Built as a Harvard AC215 capstone project.</p>
                             <div class="tag-list">
-                                <span class="tag" data-tooltip="Retrieval-Augmented Generation — an AI technique that grounds responses in a specific set of documents, reducing made-up answers.">RAG</span>
+                                <span class="tag" data-tooltip="Retrieval-Augmented Generation: an AI technique that grounds responses in a specific set of documents, reducing made-up answers.">RAG</span>
                                 <span class="tag" data-tooltip="An open-source database that stores documents as numerical fingerprints, enabling fast semantic (meaning-based) search.">ChromaDB</span>
                                 <span class="tag" data-tooltip="Google Cloud's managed platform for training and deploying AI and machine learning models.">VertexAI</span>
                                 <span class="tag" data-tooltip="A neural network that understands both images and text together, enabling cross-media search (e.g., find images using a text description).">CLIP</span>
@@ -546,8 +545,8 @@
                             <p>Comparative investigation of R-CNN vs. Transformer object detection models on personal protective equipment data. Models can monitor PPE non-compliance in industry, preventing fines and liability.</p>
                             <div class="tag-list">
                                 <span class="tag" data-tooltip="AI that can interpret and analyze images or video, similar to how human eyesight works.">Computer Vision</span>
-                                <span class="tag" data-tooltip="Region-based Convolutional Neural Network — an object detection architecture that locates and identifies specific objects within images.">R-CNN</span>
-                                <span class="tag" data-tooltip="A neural network architecture that uses &quot;attention&quot; to weigh the importance of different parts of an input — the foundation of modern AI models like ChatGPT.">Transformers</span>
+                                <span class="tag" data-tooltip="Region-based Convolutional Neural Network: an object detection architecture that locates and identifies specific objects within images.">R-CNN</span>
+                                <span class="tag" data-tooltip="A neural network architecture that uses &quot;attention&quot; to weigh the importance of different parts of an input, forming the foundation of modern AI models like ChatGPT.">Transformers</span>
                                 <span class="tag" data-tooltip="A popular, beginner-friendly programming language that is the standard tool of data science and AI.">Python</span>
                             </div>
                         </div>
@@ -564,10 +563,10 @@
                             <h3>Data Engineering Lakehouse</h3>
                             <p>Complete end-to-end ML data pipeline with a bronze/silver/gold lakehouse schema built on PySpark. The resulting architecture feeds both BI and ML business needs efficiently.</p>
                             <div class="tag-list">
-                                <span class="tag" data-tooltip="A Python library for processing massive datasets across many computers at once — useful when data is too large for a single machine.">PySpark</span>
+                                <span class="tag" data-tooltip="A Python library for processing massive datasets across many computers at once, useful when data is too large for a single machine.">PySpark</span>
                                 <span class="tag" data-tooltip="A data architecture that combines the raw storage of a data lake with the organized query performance of a data warehouse.">Lakehouse</span>
                                 <span class="tag" data-tooltip="An open-source storage layer that adds reliability and versioning to large data lakes, similar to a save-history feature for data.">Delta Lake</span>
-                                <span class="tag" data-tooltip="Extract, Transform, Load — the process of pulling raw data from sources, cleaning and reshaping it, then loading it into a destination for analysis.">ETL</span>
+                                <span class="tag" data-tooltip="Extract, Transform, Load: the process of pulling raw data from sources, cleaning and reshaping it, then loading it into a destination for analysis.">ETL</span>
                             </div>
                         </div>
                         <div class="card-actions">
